@@ -1,0 +1,81 @@
+buildscript {
+	repositories {
+		jcenter()
+	}
+	dependencies {
+		classpath "org.springframework.boot:spring-boot-gradle-plugin:2.1.0.RELEASE"
+	}
+}
+
+allprojects {
+	apply plugin: "java"
+	apply plugin: "org.springframework.boot"
+	apply plugin: "io.spring.dependency-management"
+
+	repositories {
+		mavenLocal()
+		mavenCentral()
+	}
+
+	ext {
+		apacheCommonsVersion = "3.11"
+		springbootStarterVersion = "2.4.2"
+		springbootStarterTestVersion = "2.2.2.RELEASE"
+		springbootVersion = "2.1.0.RELEASE"
+		testContainerVersion = "1.15.2"
+		jUnitVersion = "5.7.0"
+		jUnitPlatformVersion = "1.7.0"
+		mockitoVersion = "3.6.28"
+		byteBuddyVersion = "1.10.21"
+		jacksonVersion = "2.12.3"
+	}
+
+	dependencies {
+		implementation "org.apache.commons:commons-lang3:${apacheCommonsVersion}"
+		implementation 'org.springframework.boot:spring-boot-starter'
+		implementation "com.fasterxml.jackson.core:jackson-annotations:${jacksonVersion}"
+
+		// TEST
+		testImplementation("org.springframework.boot:spring-boot-starter-test:${springbootStarterTestVersion}") {
+			exclude group: 'junit', module: 'junit'
+		}
+
+		// TEST-CONTAINER
+		testImplementation "org.testcontainers:testcontainers:${testContainerVersion}"
+		testImplementation "org.testcontainers:postgresql:${testContainerVersion}"
+
+		// JUNIT-5 AND MOCKITO-3
+		testImplementation "org.junit.jupiter:junit-jupiter-api:${jUnitVersion}"
+		testImplementation "org.junit.jupiter:junit-jupiter-params:${jUnitVersion}"
+		testImplementation "org.junit.jupiter:junit-jupiter-engine:${jUnitVersion}"
+		testImplementation "org.mockito:mockito-core:${mockitoVersion}"
+		testImplementation "org.mockito:mockito-inline:${mockitoVersion}"
+		testImplementation "net.bytebuddy:byte-buddy:${byteBuddyVersion}"
+
+		testImplementation "org.junit.platform:junit-platform-launcher:${jUnitPlatformVersion}"
+		testImplementation "org.junit.platform:junit-platform-engine:${jUnitPlatformVersion}"
+		testImplementation "org.junit.platform:junit-platform-commons:${jUnitPlatformVersion}"
+	}
+
+	group "com.dolap.product"
+	version "1.0.0"
+
+	java {
+		sourceCompatibility = JavaVersion.VERSION_11
+		targetCompatibility = JavaVersion.VERSION_11
+	}
+
+	test {
+		useJUnitPlatform()
+		testLogging {
+			events "passed", "skipped", "failed", "standardOut", "standardError"
+
+			afterSuite { desc, result ->
+				if (!desc.parent) {
+					def output =  project.name + " module results: ${result.resultType} (${result.testCount} tests, ${result.successfulTestCount} passed, ${result.failedTestCount} failed, ${result.skippedTestCount} skipped)"
+					println(output)
+				}
+			}
+		}
+	}
+}

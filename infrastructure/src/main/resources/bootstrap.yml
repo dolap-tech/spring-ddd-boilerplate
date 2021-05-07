@@ -1,0 +1,35 @@
+server:
+  port: 8080
+spring:
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/postgres
+    username: username
+    password: password
+  application:
+    name: spring-ddd-boilerplate
+  jpa:
+    hibernate:
+      ddl-auto: validate
+      use-new-id-generator-mappings: false
+    properties:
+      hibernate:
+        temp:
+          use_jdbc_metadata_defaults: false
+  banner:
+    location: classpath:/banner.txt
+  messages:
+    basename: messages/message
+logging:
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss.SSS} %clr([%thread]){magenta} %yellow([%X{correlationId}]) %highlight(%-5level) %cyan(%-40.40logger{40}) - %msg %n"
+management:
+  endpoints:
+    web:
+      base-path: /api/actuator
+  endpoint:
+    health:
+      show-details: always
+springdoc:
+  api-docs:
+    path: /product-openapi

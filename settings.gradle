@@ -1,0 +1,5 @@
+rootProject.name='spring-ddd-boilerplate'
+
+include ':domain'
+include ':application'
+include ':infrastructure'
