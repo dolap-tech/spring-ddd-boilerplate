@@ -1,9 +1,9 @@
 buildscript {
 	repositories {
-		jcenter()
+		mavenCentral()
 	}
 	dependencies {
-		classpath "org.springframework.boot:spring-boot-gradle-plugin:2.1.0.RELEASE"
+		classpath "org.springframework.boot:spring-boot-gradle-plugin:3.0.5"
 	}
 }
 
@@ -18,16 +18,15 @@ allprojects {
 	}
 
 	ext {
-		apacheCommonsVersion = "3.11"
-		springbootStarterVersion = "2.4.2"
-		springbootStarterTestVersion = "2.2.2.RELEASE"
-		springbootVersion = "2.1.0.RELEASE"
-		testContainerVersion = "1.15.2"
-		jUnitVersion = "5.7.0"
-		jUnitPlatformVersion = "1.7.0"
-		mockitoVersion = "3.6.28"
-		byteBuddyVersion = "1.10.21"
-		jacksonVersion = "2.12.3"
+		apacheCommonsVersion = "3.12.0"
+		springbootStarterVersion = "3.0.5"
+		springbootStarterTestVersion = "3.0.5"
+		testContainerVersion = "1.17.6"
+		jUnitVersion = "5.9.2"
+		jUnitPlatformVersion = "1.9.2"
+		mockitoVersion = "5.2.0"
+		byteBuddyVersion = "1.14.3"
+		jacksonVersion = "2.14.2"
 	}
 
 	dependencies {
@@ -61,8 +60,8 @@ allprojects {
 	version "1.0.0"
 
 	java {
-		sourceCompatibility = JavaVersion.VERSION_11
-		targetCompatibility = JavaVersion.VERSION_11
+		sourceCompatibility = JavaVersion.VERSION_17
+		targetCompatibility = JavaVersion.VERSION_17
 	}
 
 	test {

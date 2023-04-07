@@ -2,15 +2,10 @@ package com.dolap.product.repository;
 
 import com.dolap.product.entity.Product;
 import com.dolap.product.entity.type.ProductStatus;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Repository;
 
-import java.util.Optional;
-
-@Service
-public interface ProductRepository {
-    Product save(Product product);
-
-    Optional<Product> findById(Long productId);
+@Repository
+public interface ProductRepositoryImpl extends BaseRepository<Product>, ProductRepository {
 
     boolean existsByOwnerIdAndStatus(Long ownerId, ProductStatus status);
 }

@@ -3,14 +3,14 @@ package com.dolap.product.entity;
 import com.dolap.product.entity.base.BaseEntity;
 import com.dolap.product.entity.converter.ProductStatusConverter;
 import com.dolap.product.entity.type.ProductStatus;
+import jakarta.persistence.*;
 
-import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.Objects;
 
 @Entity
 @Table(name = "product")
-@SequenceGenerator(name = "id_generator", sequenceName = "seq_product")
+@SequenceGenerator(name = "id_generator", sequenceName = "seq_product", allocationSize = 1)
 public class Product extends BaseEntity {
 
     @Column(nullable = false)

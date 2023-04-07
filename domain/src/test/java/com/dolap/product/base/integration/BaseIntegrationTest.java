@@ -6,7 +6,6 @@ import org.springframework.context.ApplicationContextInitializer;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.core.env.ConfigurableEnvironment;
 import org.springframework.core.env.MapPropertySource;
-import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.testcontainers.containers.PostgreSQLContainer;
 import org.testcontainers.lifecycle.Startables;
@@ -17,7 +16,6 @@ import java.util.Map;
 import java.util.stream.Stream;
 
 @SpringBootTest
-@ActiveProfiles("test")
 @ExtendWith(SpringExtension.class)
 public abstract class BaseIntegrationTest implements ApplicationContextInitializer<ConfigurableApplicationContext> {
 

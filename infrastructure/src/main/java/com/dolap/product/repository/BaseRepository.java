@@ -1,4 +1,4 @@
-package com.dolap.product.repository.base;
+package com.dolap.product.repository;
 
 import com.dolap.product.entity.base.BaseEntity;
 import org.springframework.data.jpa.repository.JpaRepository;

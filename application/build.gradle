@@ -1,8 +1,8 @@
 dependencies {
-	compile project(':domain')
-	testCompile project(path: ':domain', configuration: 'tests')
+	implementation project(":domain")
+	testImplementation project(path: ':domain', configuration: 'tests')
 
-	compile "org.springframework.boot:spring-boot-starter-validation:${springbootStarterVersion}"
+	implementation "org.springframework.boot:spring-boot-starter-validation:${springbootStarterVersion}"
 }
 
 evaluationDependsOn(':domain')
@@ -21,7 +21,7 @@ task testJar(type: Jar, dependsOn: testClasses) {
 }
 
 configurations {
-	tests { extendsFrom testRuntime }
+	tests { extendsFrom testRuntimeOnly }
 }
 
 artifacts {

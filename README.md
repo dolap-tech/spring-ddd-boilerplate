@@ -16,13 +16,13 @@
 * `Infrastructure` module is a door that opening to out of the world. Some important request and response data model as following such as create and get product operations. For more information you can take a look at swagger or postman collections.
 
 ### Tech Stacks
- * Java 11
- * Spring 2.x
- * Gradle
+ * Java 17
+ * Spring 3.0.x
+ * Gradle 7.6.x
  * Flyway
  * Postgres
  * Testcontainer
- * jUnit5 and Mockito 3.x
+ * jUnit5 and Mockito 5.2.x
 
 ### Acknowledgment
 Thanks to my colleagues to share their know-how about domain driven design. Also, They've made a another boilerplate project about Quarkus, you can cast an eye [here](https://github.com/dolap-tech/quarkus-ddd-boilerplate) if you interested in this topic.

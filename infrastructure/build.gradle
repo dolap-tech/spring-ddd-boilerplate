@@ -1,31 +1,26 @@
 ext {
-    postgresVersion = "42.1.4"
-    newrelicVersion = "6.4.1"
-    openApiVersion = "1.3.3"
-    sqsVersion = "1.0.8"
-    jmsVersion = "5.1.2.RELEASE"
+    postgresVersion = "42.6.0"
+    newrelicVersion = "8.0.1"
+    openApiVersion = "2.1.0"
 }
 
 evaluationDependsOn(':application')
 
 dependencies {
-    compile project(':application')
-    testCompile project(path: ':application', configuration: 'tests')
+    implementation project(":application")
+    implementation project(":domain")
+    testImplementation project(path: ':application', configuration: 'tests')
+    testImplementation project(path: ':domain', configuration: 'tests')
 
     // SPRING-BOOT STARTER
     implementation "org.springframework.boot:spring-boot-starter-web:${springbootStarterVersion}"
     implementation "org.springframework.boot:spring-boot-starter-actuator:${springbootStarterVersion}"
-
-    implementation "org.springframework.cloud:spring-cloud-config-client:${springbootVersion}"
+    implementation "org.springframework.boot:spring-boot-starter-data-jpa:${springbootStarterVersion}"
 
     implementation "com.newrelic.agent.java:newrelic-api:${newrelicVersion}"
-    implementation "org.springdoc:springdoc-openapi-ui:${openApiVersion}"
+    implementation "org.springdoc:springdoc-openapi-starter-webmvc-ui:${openApiVersion}"
 
     // DATABASE
     implementation "org.postgresql:postgresql:${postgresVersion}"
     implementation 'org.flywaydb:flyway-core'
-
-    // MESSAGING
-    implementation "com.amazonaws:amazon-sqs-java-messaging-lib:${sqsVersion}"
-    implementation "org.springframework:spring-jms:${jmsVersion}"
 }

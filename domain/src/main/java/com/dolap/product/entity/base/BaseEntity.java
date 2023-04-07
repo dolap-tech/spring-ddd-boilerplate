@@ -1,6 +1,6 @@
 package com.dolap.product.entity.base;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 import java.time.Instant;
 import java.util.Date;
 import java.util.Objects;
