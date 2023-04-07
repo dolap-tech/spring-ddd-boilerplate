@@ -1,8 +1,7 @@
 package com.dolap.product.model.request;
 
 import com.dolap.product.model.request.base.ProductRequest;
-
-import javax.validation.constraints.NotBlank;
+import jakarta.validation.constraints.*;
 
 public class GetProductRequest implements ProductRequest {
 

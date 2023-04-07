@@ -25,14 +25,6 @@ public class DefaultExceptionHandler extends ResponseEntityExceptionHandler {
         this.messageResourceService = messageResourceService;
     }
 
-    @Override
-    protected ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex, HttpHeaders headers, HttpStatus status, WebRequest request) {
-        var bindingResult = ex.getBindingResult();
-        String messageKey = bindingResult.getFieldError() != null ? bindingResult.getFieldError().getDefaultMessage() : Strings.EMPTY;
-        LOGGER.error("Method argument not valid for: " + messageKey, ex);
-        return getErrorResponse(messageKey);
-    }
-
     @ExceptionHandler(BusinessException.class)
     public final ResponseEntity<Object> handleAll(BusinessException ex) {
         LOGGER.error("An exception is thrown!", ex);

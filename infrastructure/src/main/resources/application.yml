@@ -11,11 +11,11 @@ spring:
   jpa:
     hibernate:
       ddl-auto: validate
-      use-new-id-generator-mappings: false
     properties:
       hibernate:
         temp:
           use_jdbc_metadata_defaults: false
+        dialect: org.hibernate.dialect.PostgreSQLDialect
   banner:
     location: classpath:/banner.txt
   messages:
@@ -33,3 +33,5 @@ management:
 springdoc:
   api-docs:
     path: /product-openapi
+  swagger-ui:
+    path: /swagger-ui.html

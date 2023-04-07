@@ -8,9 +8,8 @@ import com.dolap.product.model.request.CreateProductRequest;
 import com.dolap.product.model.request.GetProductRequest;
 import com.dolap.product.model.response.CreateProductResponse;
 import com.dolap.product.model.response.GetProductResponse;
+import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;
-
-import javax.validation.Valid;
 
 @RestController
 @RequestMapping("product")
